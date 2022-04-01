@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
+  <process:MainProcess xmi:id="_Qt4cYLHMEeypwLpeLeoGfA" name="Blog-alert" version="2.0" author="Soham" bonitaVersion="7.13.0" bonitaModelVersion="7.12.0-004">
+    <elements xmi:type="process:Pool" xmi:id="_Qt4cYbHMEeypwLpeLeoGfA" name="Postingablog" version="2.0" displayName="Posting a blog">
+      <elements xmi:type="process:Lane" xmi:id="_Qt4cYrHMEeypwLpeLeoGfA" name="Employee Lane" actor="_Qt4csrHMEeypwLpeLeoGfA">
+        <elements xmi:type="process:StartEvent" xmi:id="_Qt4cY7HMEeypwLpeLeoGfA" documentation="When a new blog article is posted in the community" name="New blog article is posted" outgoing="_Qt4cqbHMEeypwLpeLeoGfA">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Qt4cZLHMEeypwLpeLeoGfA" name="The Blog is created" content="The Blog is created" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_Qt4cZbHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_Qt4cZrHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:Task" xmi:id="_Qt4cZ7HMEeypwLpeLeoGfA" name="Choose a Twitter template" outgoing="_Qt4crLHMEeypwLpeLeoGfA" incoming="_Qt4cqbHMEeypwLpeLeoGfA" overrideActorsOfTheLane="false">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Qt4caLHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_Qt4cabHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_Qt4carHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_Qt4ca7HMEeypwLpeLeoGfA">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_Qt4cbLHMEeypwLpeLeoGfA" name="blog" content="blog" type="TYPE_VARIABLE" returnType="com.bonita.model.Blogs">
+              <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_Qt4cbbHMEeypwLpeLeoGfA" name="blog" dataType="_Qt5DdLHMEeypwLpeLeoGfA" className="com.bonita.model.Blogs"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_Qt4cbrHMEeypwLpeLeoGfA" name="blogInput.templates" content="def templatesList = []&#xD;&#xA;//For each item collected in multiple input&#xD;&#xA;blogInput?.templates.each{&#xD;&#xA;&#x9;//Add Templates instance&#xD;&#xA;&#x9;templatesList.add({ currentTemplatesInput ->&#xD;&#xA;&#x9;&#x9;def templatesVar = templatesDAO.findByPersistenceId(currentTemplatesInput.persistenceId_string?.trim() ? currentTemplatesInput.persistenceId_string.toLong() : null)&#xD;&#xA;&#x9;&#x9;if(!templatesVar) {&#xD;&#xA;&#x9;&#x9;&#x9;throw new IllegalArgumentException(&quot;The aggregated reference of type `Templates` with the persistence id &quot; + currentTemplatesInput.persistenceId_string?.trim() ? currentTemplatesInput.persistenceId_string.toLong() : null + &quot; has not been found.&quot;)&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return templatesVar&#xD;&#xA;&#x9;}(it))&#xD;&#xA;}&#xD;&#xA;return templatesList" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.util.List">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_Qt4cb7HMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" createMode="false"/>
+              <referencedElements xmi:type="expression:Expression" xmi:id="_Qt4ccLHMEeypwLpeLeoGfA" name="templatesDAO" content="templatesDAO" type="TYPE_BUSINESS_OBJECT_DAO" returnType="com.bonita.model.TemplatesDAO" returnTypeFixed="true"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_Qt4ccbHMEeypwLpeLeoGfA" type="JAVA_METHOD" expression="setTemplates">
+              <inputTypes>java.util.List</inputTypes>
+            </operator>
+          </operations>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_Qt4ccrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_Qt4cc7HMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_Qt4cdLHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_Qt4cdbHMEeypwLpeLeoGfA" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_Qt4cdrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cd7HMEeypwLpeLeoGfA">
+            <targetForm xmi:type="expression:Expression" xmi:id="_Qt4ceLHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+          </formMapping>
+          <contract xmi:type="process:Contract" xmi:id="_Qt4cebHMEeypwLpeLeoGfA">
+            <inputs xmi:type="process:ContractInput" xmi:id="_Qt4cerHMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog" createMode="false">
+              <inputs xmi:type="process:ContractInput" xmi:id="_Qt4ce7HMEeypwLpeLeoGfA" name="templates" type="COMPLEX" multiple="true" createMode="false">
+                <inputs xmi:type="process:ContractInput" xmi:id="_Qt4cfLHMEeypwLpeLeoGfA" name="persistenceId_string" createMode="false"/>
+              </inputs>
+            </inputs>
+            <constraints xmi:type="process:ContractConstraint" xmi:id="_Qt4cfbHMEeypwLpeLeoGfA" expression="!blogInput?.templates || blogInput?.templates?.persistenceId_string" errorMessage="Templates must reference an existing instance with a persistenceId for Blogs" name="aggregation_blogInput_templates">
+              <inputNames>blogInput</inputNames>
+            </constraints>
+          </contract>
+          <expectedDuration xmi:type="expression:Expression" xmi:id="_Qt4cfrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Long" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:ServiceTask" xmi:id="_Qt4cf7HMEeypwLpeLeoGfA" name="Sending the tweet" outgoing="_Qt4cr7HMEeypwLpeLeoGfA" incoming="_Qt4crLHMEeypwLpeLeoGfA">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Qt4cgLHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_Qt4cgbHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_Qt4cgrHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_Qt4cmbHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_Qt4cmrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_Qt4cm7HMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_Qt4cnLHMEeypwLpeLeoGfA" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_Qt4cnbHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:EndEvent" xmi:id="_Qt4cnrHMEeypwLpeLeoGfA" name="End1" incoming="_Qt4cr7HMEeypwLpeLeoGfA">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_Qt4cn7HMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_Qt4coLHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_Qt4cobHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+        </elements>
+      </elements>
+      <data xmi:type="process:BusinessObjectData" xmi:id="_Qt4corHMEeypwLpeLeoGfA" name="blog" dataType="_Qt5DdLHMEeypwLpeLeoGfA" className="com.bonita.model.Blogs">
+        <defaultValue xmi:type="expression:Expression" xmi:id="_Qt4co7HMEeypwLpeLeoGfA" name="initBlog()" content="def blogsVar = new com.bonita.model.Blogs()&#xD;&#xA;blogsVar.link = blogInput?.link&#xD;&#xA;blogsVar.author = blogInput?.author&#xD;&#xA;blogsVar.title = blogInput?.title&#xD;&#xA;blogsVar.shortDescription = blogInput?.shortDescription&#xD;&#xA;return blogsVar" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="com.bonita.model.Blogs">
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_Qt4cpLHMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX"/>
+        </defaultValue>
+      </data>
+      <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cpbHMEeypwLpeLeoGfA">
+        <targetForm xmi:type="expression:Expression" xmi:id="_Qt4cprHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </formMapping>
+      <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_Qt4cp7HMEeypwLpeLeoGfA">
+        <targetForm xmi:type="expression:Expression" xmi:id="_Qt4cqLHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </overviewFormMapping>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_Qt4cqbHMEeypwLpeLeoGfA" target="_Qt4cZ7HMEeypwLpeLeoGfA" source="_Qt4cY7HMEeypwLpeLeoGfA">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_Qt4cqrHMEeypwLpeLeoGfA"/>
+        <condition xmi:type="expression:Expression" xmi:id="_Qt4cq7HMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_Qt4crLHMEeypwLpeLeoGfA" target="_Qt4cf7HMEeypwLpeLeoGfA" source="_Qt4cZ7HMEeypwLpeLeoGfA">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_Qt4crbHMEeypwLpeLeoGfA"/>
+        <condition xmi:type="expression:Expression" xmi:id="_Qt4crrHMEeypwLpeLeoGfA" name="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_Qt4cr7HMEeypwLpeLeoGfA" target="_Qt4cnrHMEeypwLpeLeoGfA" source="_Qt4cf7HMEeypwLpeLeoGfA">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_Qt4csLHMEeypwLpeLeoGfA"/>
+        <condition xmi:type="expression:Expression" xmi:id="_Qt4csbHMEeypwLpeLeoGfA" name="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <actors xmi:type="process:Actor" xmi:id="_Qt4csrHMEeypwLpeLeoGfA" documentation="This is an example of actor that is mapped to any ACME users" name="Employee actor" initiator="true"/>
+      <contract xmi:type="process:Contract" xmi:id="_Qt4cs7HMEeypwLpeLeoGfA">
+        <inputs xmi:type="process:ContractInput" xmi:id="_Qt4ctLHMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog">
+          <inputs xmi:type="process:ContractInput" xmi:id="_Qt4ctbHMEeypwLpeLeoGfA" name="link"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_Qt4ctrHMEeypwLpeLeoGfA" name="author"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_Qt4ct7HMEeypwLpeLeoGfA" name="title"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_Qt4cuLHMEeypwLpeLeoGfA" name="shortDescription"/>
+        </inputs>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_Qt4cubHMEeypwLpeLeoGfA" expression="blogInput?.link != null" errorMessage="link is mandatory for Blogs" name="mandatory_blogInput_link">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_Qt4curHMEeypwLpeLeoGfA" expression="blogInput?.author != null" errorMessage="author is mandatory for Blogs" name="mandatory_blogInput_author">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_Qt4cu7HMEeypwLpeLeoGfA" expression="blogInput?.title != null" errorMessage="title is mandatory for Blogs" name="mandatory_blogInput_title">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+      </contract>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Qt4cvLHMEeypwLpeLeoGfA">
+        <name xmi:type="expression:Expression" xmi:id="_Qt4cvbHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_Qt4cvrHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Qt4cv7HMEeypwLpeLeoGfA">
+        <name xmi:type="expression:Expression" xmi:id="_Qt4cwLHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_Qt4cwbHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Qt4cwrHMEeypwLpeLeoGfA">
+        <name xmi:type="expression:Expression" xmi:id="_Qt4cw7HMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_Qt4cxLHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Qt4cxbHMEeypwLpeLeoGfA">
+        <name xmi:type="expression:Expression" xmi:id="_Qt4cxrHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_Qt4cx7HMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_Qt4cyLHMEeypwLpeLeoGfA">
+        <name xmi:type="expression:Expression" xmi:id="_Qt4cybHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_Qt4cyrHMEeypwLpeLeoGfA" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+    </elements>
+    <datatypes xmi:type="process:BooleanType" xmi:id="_Qt4cy7HMEeypwLpeLeoGfA" name="Boolean"/>
+    <datatypes xmi:type="process:DateType" xmi:id="_Qt4czLHMEeypwLpeLeoGfA" name="Date"/>
+    <datatypes xmi:type="process:IntegerType" xmi:id="_Qt4czbHMEeypwLpeLeoGfA" name="Integer"/>
+    <datatypes xmi:type="process:LongType" xmi:id="_Qt4czrHMEeypwLpeLeoGfA" name="Long"/>
+    <datatypes xmi:type="process:DoubleType" xmi:id="_Qt5DcLHMEeypwLpeLeoGfA" name="Double"/>
+    <datatypes xmi:type="process:StringType" xmi:id="_Qt5DcbHMEeypwLpeLeoGfA" name="Text"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_Qt5DcrHMEeypwLpeLeoGfA" name="Java_object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_Qt5Dc7HMEeypwLpeLeoGfA" name="XML"/>
+    <datatypes xmi:type="process:BusinessObjectType" xmi:id="_Qt5DdLHMEeypwLpeLeoGfA" name="Business_Object"/>
+  </process:MainProcess>
+  <notation:Diagram xmi:id="_Qt5DdbHMEeypwLpeLeoGfA" type="Process" element="_Qt4cYLHMEeypwLpeLeoGfA" name="MyDiagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_Qt5DdrHMEeypwLpeLeoGfA" type="2007" element="_Qt4cYbHMEeypwLpeLeoGfA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Qt5Dd7HMEeypwLpeLeoGfA" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DeLHMEeypwLpeLeoGfA" type="7001">
+        <children xmi:type="notation:Node" xmi:id="_Qt5DebHMEeypwLpeLeoGfA" type="3007" element="_Qt4cYrHMEeypwLpeLeoGfA">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DerHMEeypwLpeLeoGfA" type="5007"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_Qt5De7HMEeypwLpeLeoGfA" type="7002">
+            <children xmi:type="notation:Shape" xmi:id="_Qt5DfLHMEeypwLpeLeoGfA" type="3005" element="_Qt4cZ7HMEeypwLpeLeoGfA" fontName="Segoe UI" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DfbHMEeypwLpeLeoGfA" type="5005"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5DfrHMEeypwLpeLeoGfA" x="289" y="83" width="123" height="61"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_Qt5Df7HMEeypwLpeLeoGfA" type="3002" element="_Qt4cY7HMEeypwLpeLeoGfA" fontName="Segoe UI">
+              <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DgLHMEeypwLpeLeoGfA" type="5024">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Qt5DgbHMEeypwLpeLeoGfA" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5DgrHMEeypwLpeLeoGfA" x="89" y="103"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_Qt5Dg7HMEeypwLpeLeoGfA" type="3027" element="_Qt4cf7HMEeypwLpeLeoGfA" fontName="Segoe UI" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DhLHMEeypwLpeLeoGfA" type="5017"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5DhbHMEeypwLpeLeoGfA" x="501" y="83"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_Qt5DhrHMEeypwLpeLeoGfA" type="3003" element="_Qt4cnrHMEeypwLpeLeoGfA" fontName="Segoe UI">
+              <children xmi:type="notation:DecorationNode" xmi:id="_Qt5Dh7HMEeypwLpeLeoGfA" type="5025">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Qt5DiLHMEeypwLpeLeoGfA" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5DibHMEeypwLpeLeoGfA" x="710" y="100"/>
+            </children>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_Qt5DirHMEeypwLpeLeoGfA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Qt5Di7HMEeypwLpeLeoGfA" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_Qt5DjLHMEeypwLpeLeoGfA"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_Qt5DjbHMEeypwLpeLeoGfA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5DjrHMEeypwLpeLeoGfA"/>
+        </children>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_Qt5Dj7HMEeypwLpeLeoGfA"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Qt5DkLHMEeypwLpeLeoGfA" fontName="Segoe UI"/>
+      <styles xmi:type="notation:LineStyle" xmi:id="_Qt5DkbHMEeypwLpeLeoGfA"/>
+      <styles xmi:type="notation:FillStyle" xmi:id="_Qt5DkrHMEeypwLpeLeoGfA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qt5Dk7HMEeypwLpeLeoGfA" width="1320" height="250"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_Qt5DlLHMEeypwLpeLeoGfA"/>
+    <edges xmi:type="notation:Connector" xmi:id="_Qt5DlbHMEeypwLpeLeoGfA" type="4001" element="_Qt4cqbHMEeypwLpeLeoGfA" source="_Qt5Df7HMEeypwLpeLeoGfA" target="_Qt5DfLHMEeypwLpeLeoGfA" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DlrHMEeypwLpeLeoGfA" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Qt5Dl7HMEeypwLpeLeoGfA" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Qt5DmLHMEeypwLpeLeoGfA" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qt5DmbHMEeypwLpeLeoGfA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Qt5DmrHMEeypwLpeLeoGfA" type="4001" element="_Qt4crLHMEeypwLpeLeoGfA" source="_Qt5DfLHMEeypwLpeLeoGfA" target="_Qt5Dg7HMEeypwLpeLeoGfA" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Qt5Dm7HMEeypwLpeLeoGfA" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Qt5DnLHMEeypwLpeLeoGfA" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Qt5DnbHMEeypwLpeLeoGfA" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qt5DnrHMEeypwLpeLeoGfA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Qt5Dn7HMEeypwLpeLeoGfA" type="4001" element="_Qt4cr7HMEeypwLpeLeoGfA" source="_Qt5Dg7HMEeypwLpeLeoGfA" target="_Qt5DhrHMEeypwLpeLeoGfA" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Qt5DoLHMEeypwLpeLeoGfA" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Qt5DobHMEeypwLpeLeoGfA" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Qt5DorHMEeypwLpeLeoGfA" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Qt5Do7HMEeypwLpeLeoGfA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>
