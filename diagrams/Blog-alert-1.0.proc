@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connectorconfiguration="http://wwww.bonitasoft.org/model/connector/configuration" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
   <process:MainProcess xmi:id="_lT-5gK9iEeye_bOIwyjxUg" name="Blog-alert" author="Soham" bonitaVersion="7.13.0" bonitaModelVersion="7.12.0-004">
-    <elements xmi:type="process:Pool" xmi:id="_lT-5ga9iEeye_bOIwyjxUg" name="Pool">
-      <elements xmi:type="process:Lane" xmi:id="_lT-5gq9iEeye_bOIwyjxUg" name="Employee lane" actor="_lT-5m69iEeye_bOIwyjxUg">
+    <elements xmi:type="process:Pool" xmi:id="_lT-5ga9iEeye_bOIwyjxUg" name="Postingablog" displayName="Posting a blog">
+      <elements xmi:type="process:Lane" xmi:id="_lT-5gq9iEeye_bOIwyjxUg" name="Employee Lane" actor="_lT-5m69iEeye_bOIwyjxUg">
         <elements xmi:type="process:StartEvent" xmi:id="_lT-5g69iEeye_bOIwyjxUg" documentation="When a new blog article is posted in the community" name="New blog article is posted" outgoing="_lT-5mK9iEeye_bOIwyjxUg">
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_lT-5hK9iEeye_bOIwyjxUg" name="The Blog is created" content="The Blog is created" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_lT-5ha9iEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
@@ -12,15 +12,36 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_lT-5iK9iEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_lT-5ia9iEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_lT-5iq9iEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_6OJK0bHJEeypwLpeLeoGfA">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_6OJK0rHJEeypwLpeLeoGfA" name="blog" content="blog" type="TYPE_VARIABLE" returnType="com.bonita.model.Blogs">
+              <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_6OJK07HJEeypwLpeLeoGfA" name="blog" dataType="_lT-5tK9iEeye_bOIwyjxUg" className="com.bonita.model.Blogs"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_6OJK1LHJEeypwLpeLeoGfA" name="blogInput.templates" content="def templatesList = []&#xD;&#xA;//For each item collected in multiple input&#xD;&#xA;blogInput?.templates.each{&#xD;&#xA;&#x9;//Add Templates instance&#xD;&#xA;&#x9;templatesList.add({ currentTemplatesInput ->&#xD;&#xA;&#x9;&#x9;def templatesVar = templatesDAO.findByPersistenceId(currentTemplatesInput.persistenceId_string?.trim() ? currentTemplatesInput.persistenceId_string.toLong() : null)&#xD;&#xA;&#x9;&#x9;if(!templatesVar) {&#xD;&#xA;&#x9;&#x9;&#x9;throw new IllegalArgumentException(&quot;The aggregated reference of type `Templates` with the persistence id &quot; + currentTemplatesInput.persistenceId_string?.trim() ? currentTemplatesInput.persistenceId_string.toLong() : null + &quot; has not been found.&quot;)&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return templatesVar&#xD;&#xA;&#x9;}(it))&#xD;&#xA;}&#xD;&#xA;return templatesList" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.util.List">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_6OJK1bHJEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" createMode="false"/>
+              <referencedElements xmi:type="expression:Expression" xmi:id="_6OJK1rHJEeypwLpeLeoGfA" name="templatesDAO" content="templatesDAO" type="TYPE_BUSINESS_OBJECT_DAO" returnType="com.bonita.model.TemplatesDAO" returnTypeFixed="true"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_6OJK17HJEeypwLpeLeoGfA" type="JAVA_METHOD" expression="setTemplates">
+              <inputTypes>java.util.List</inputTypes>
+            </operator>
+          </operations>
           <loopCondition xmi:type="expression:Expression" xmi:id="_lT-5i69iEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_lT-5jK9iEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_lT-5ja9iEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <iteratorExpression xmi:type="expression:Expression" xmi:id="_lT-5jq9iEeye_bOIwyjxUg" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
           <completionCondition xmi:type="expression:Expression" xmi:id="_lT-5j69iEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <formMapping xmi:type="process:FormMapping" xmi:id="_lT-5kK9iEeye_bOIwyjxUg">
-            <targetForm xmi:type="expression:Expression" xmi:id="_lT-5ka9iEeye_bOIwyjxUg" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+            <targetForm xmi:type="expression:Expression" xmi:id="_61kpILHHEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
           </formMapping>
-          <contract xmi:type="process:Contract" xmi:id="_lT-5kq9iEeye_bOIwyjxUg"/>
+          <contract xmi:type="process:Contract" xmi:id="_lT-5kq9iEeye_bOIwyjxUg">
+            <inputs xmi:type="process:ContractInput" xmi:id="_6OIjwLHJEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog" createMode="false">
+              <inputs xmi:type="process:ContractInput" xmi:id="_6OIjwbHJEeypwLpeLeoGfA" name="templates" type="COMPLEX" multiple="true" createMode="false">
+                <inputs xmi:type="process:ContractInput" xmi:id="_6OIjwrHJEeypwLpeLeoGfA" name="persistenceId_string" createMode="false"/>
+              </inputs>
+            </inputs>
+            <constraints xmi:type="process:ContractConstraint" xmi:id="_6OJK0LHJEeypwLpeLeoGfA" expression="!blogInput?.templates || blogInput?.templates?.persistenceId_string" errorMessage="Templates must reference an existing instance with a persistenceId for Blogs" name="aggregation_blogInput_templates">
+              <inputNames>blogInput</inputNames>
+            </constraints>
+          </contract>
           <expectedDuration xmi:type="expression:Expression" xmi:id="_lT-5k69iEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Long" returnTypeFixed="true"/>
         </elements>
         <elements xmi:type="process:ServiceTask" xmi:id="_pSPpYK9jEeye_bOIwyjxUg" name="Sending the tweet" outgoing="_EDNiwK9qEeye_bOIwyjxUg" incoming="_pSaBcK9jEeye_bOIwyjxUg">
@@ -73,8 +94,13 @@
           <stepSummary xmi:type="expression:Expression" xmi:id="_EDIqQq9qEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
         </elements>
       </elements>
+      <data xmi:type="process:BusinessObjectData" xmi:id="_obsc4LHJEeypwLpeLeoGfA" name="blog" dataType="_lT-5tK9iEeye_bOIwyjxUg" className="com.bonita.model.Blogs">
+        <defaultValue xmi:type="expression:Expression" xmi:id="_vxEvA7HJEeypwLpeLeoGfA" name="initBlog()" content="def blogsVar = new com.bonita.model.Blogs()&#xD;&#xA;blogsVar.link = blogInput?.link&#xD;&#xA;blogsVar.author = blogInput?.author&#xD;&#xA;blogsVar.title = blogInput?.title&#xD;&#xA;blogsVar.shortDescription = blogInput?.shortDescription&#xD;&#xA;return blogsVar" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="com.bonita.model.Blogs">
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_vxEvBLHJEeypwLpeLeoGfA" name="blogInput" type="COMPLEX"/>
+        </defaultValue>
+      </data>
       <formMapping xmi:type="process:FormMapping" xmi:id="_lT-5lK9iEeye_bOIwyjxUg">
-        <targetForm xmi:type="expression:Expression" xmi:id="_lT-5la9iEeye_bOIwyjxUg" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_61kpIbHHEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_lT-5lq9iEeye_bOIwyjxUg">
         <targetForm xmi:type="expression:Expression" xmi:id="_lT-5l69iEeye_bOIwyjxUg" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
@@ -92,7 +118,23 @@
         <condition xmi:type="expression:Expression" xmi:id="_EDNiwq9qEeye_bOIwyjxUg" name="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
       </connections>
       <actors xmi:type="process:Actor" xmi:id="_lT-5m69iEeye_bOIwyjxUg" documentation="This is an example of actor that is mapped to any ACME users" name="Employee actor" initiator="true"/>
-      <contract xmi:type="process:Contract" xmi:id="_lT-5nK9iEeye_bOIwyjxUg"/>
+      <contract xmi:type="process:Contract" xmi:id="_lT-5nK9iEeye_bOIwyjxUg">
+        <inputs xmi:type="process:ContractInput" xmi:id="_vxEH8LHJEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog">
+          <inputs xmi:type="process:ContractInput" xmi:id="_vxEH8bHJEeypwLpeLeoGfA" name="link"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_vxEH8rHJEeypwLpeLeoGfA" name="author"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_vxEH87HJEeypwLpeLeoGfA" name="title"/>
+          <inputs xmi:type="process:ContractInput" xmi:id="_vxEH9LHJEeypwLpeLeoGfA" name="shortDescription"/>
+        </inputs>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_vxEvALHJEeypwLpeLeoGfA" expression="blogInput?.link != null" errorMessage="link is mandatory for Blogs" name="mandatory_blogInput_link">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_vxEvAbHJEeypwLpeLeoGfA" expression="blogInput?.author != null" errorMessage="author is mandatory for Blogs" name="mandatory_blogInput_author">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+        <constraints xmi:type="process:ContractConstraint" xmi:id="_vxEvArHJEeypwLpeLeoGfA" expression="blogInput?.title != null" errorMessage="title is mandatory for Blogs" name="mandatory_blogInput_title">
+          <inputNames>blogInput</inputNames>
+        </constraints>
+      </contract>
       <searchIndexes xmi:type="process:SearchIndex" xmi:id="_lT-5na9iEeye_bOIwyjxUg">
         <name xmi:type="expression:Expression" xmi:id="_lT-5nq9iEeye_bOIwyjxUg" content="" returnTypeFixed="true"/>
         <value xmi:type="expression:Expression" xmi:id="_lT-5n69iEeye_bOIwyjxUg" content="" returnTypeFixed="true"/>
