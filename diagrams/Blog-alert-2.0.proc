@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connectorconfiguration="http://wwww.bonitasoft.org/model/connector/configuration" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
   <process:MainProcess xmi:id="_Qt4cYLHMEeypwLpeLeoGfA" name="Blog-alert" version="2.0" author="Soham" bonitaVersion="7.13.0" bonitaModelVersion="7.12.0-004">
     <elements xmi:type="process:Pool" xmi:id="_Qt4cYbHMEeypwLpeLeoGfA" name="Postingablog" version="2.0" displayName="Posting a blog">
       <elements xmi:type="process:Lane" xmi:id="_Qt4cYrHMEeypwLpeLeoGfA" name="Employee Lane" actor="_Qt4csrHMEeypwLpeLeoGfA">
@@ -30,7 +30,7 @@
           <iteratorExpression xmi:type="expression:Expression" xmi:id="_Qt4cdbHMEeypwLpeLeoGfA" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
           <completionCondition xmi:type="expression:Expression" xmi:id="_Qt4cdrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cd7HMEeypwLpeLeoGfA">
-            <targetForm xmi:type="expression:Expression" xmi:id="_Qt4ceLHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+            <targetForm xmi:type="expression:Expression" xmi:id="_Xlw1wLdUEeyxLuItBZKYKw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
           </formMapping>
           <contract xmi:type="process:Contract" xmi:id="_Qt4cebHMEeypwLpeLeoGfA">
             <inputs xmi:type="process:ContractInput" xmi:id="_Qt4cerHMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog" createMode="false">
@@ -48,6 +48,69 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_Qt4cgLHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_Qt4cgbHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_Qt4cgrHMEeypwLpeLeoGfA" name="" content="" returnTypeFixed="true"/>
+          <connectors xmi:type="process:Connector" xmi:id="_nhxG0LdREeyxLuItBZKYKw" name="sendemail" definitionId="email" event="ON_FINISH" definitionVersion="1.2.0">
+            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_nhxG0bdREeyxLuItBZKYKw" definitionId="email" version="1.2.0" modelVersion="7.12.0-004">
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxG0rdREeyxLuItBZKYKw" key="smtpHost">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxG07dREeyxLuItBZKYKw" name="localhost" content="localhost" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxG1LdREeyxLuItBZKYKw" key="smtpPort">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt4LdREeyxLuItBZKYKw" name="2525" content="2525" returnType="java.lang.Integer" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt4bdREeyxLuItBZKYKw" key="sslSupport">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt4rdREeyxLuItBZKYKw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt47dREeyxLuItBZKYKw" key="starttlsSupport">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt5LdREeyxLuItBZKYKw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt5bdREeyxLuItBZKYKw" key="trustCertificate">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt5rdREeyxLuItBZKYKw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt57dREeyxLuItBZKYKw" key="userName">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt6LdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt6bdREeyxLuItBZKYKw" key="password">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt6rdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt67dREeyxLuItBZKYKw" key="from">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt7LdREeyxLuItBZKYKw" name="from()" content="'community@bonitasoft.com'" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt7bdREeyxLuItBZKYKw" key="returnPath">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt7rdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt77dREeyxLuItBZKYKw" key="to">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt8LdREeyxLuItBZKYKw" name="to()" content="'bonitasfot@gmail.com'" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt8bdREeyxLuItBZKYKw" key="bcc">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt8rdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt87dREeyxLuItBZKYKw" key="cc">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt9LdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt9bdREeyxLuItBZKYKw" key="subject">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt9rdREeyxLuItBZKYKw" name="subject()" content="def myTemplate= blog.templates.get(0).content&#xD;&#xA;def engine = new groovy.text.SimpleTemplateEngine() &#xD;&#xA;return engine.createTemplate(myTemplate).make([link:blog.link]).toString() " interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_bgMOgLdVEeyxLuItBZKYKw" name="blog" dataType="_Qt5DdLHMEeypwLpeLeoGfA" className="com.bonita.model.Blogs"/>
+                </expression>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt-LdREeyxLuItBZKYKw" key="html">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt-bdREeyxLuItBZKYKw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt-rdREeyxLuItBZKYKw" key="message">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt-7dREeyxLuItBZKYKw" name="&lt;pattern-expression>" content="" type="TYPE_PATTERN" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt_7dREeyxLuItBZKYKw" key="headers">
+                <expression xmi:type="expression:TableExpression" xmi:id="_nhxuALdREeyxLuItBZKYKw"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxuAbdREeyxLuItBZKYKw" key="charset">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxuArdREeyxLuItBZKYKw" name="UTF-8" content="UTF-8" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxuA7dREeyxLuItBZKYKw" key="replyTo">
+                <expression xmi:type="expression:Expression" xmi:id="_nhxuBLdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
+              </parameters>
+              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxuBbdREeyxLuItBZKYKw" key="attachments">
+                <expression xmi:type="expression:ListExpression" xmi:id="_nhxuBrdREeyxLuItBZKYKw"/>
+              </parameters>
+            </configuration>
+          </connectors>
           <loopCondition xmi:type="expression:Expression" xmi:id="_Qt4cmbHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_Qt4cmrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_Qt4cm7HMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
@@ -66,7 +129,7 @@
         </defaultValue>
       </data>
       <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cpbHMEeypwLpeLeoGfA">
-        <targetForm xmi:type="expression:Expression" xmi:id="_Qt4cprHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_Xlw1wbdUEeyxLuItBZKYKw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_Qt4cp7HMEeypwLpeLeoGfA">
         <targetForm xmi:type="expression:Expression" xmi:id="_Qt4cqLHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
