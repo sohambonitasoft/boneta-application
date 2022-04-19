@@ -2,7 +2,7 @@
   "modelVersion" : "2.2",
   "id" : "blogAlert",
   "name" : "blogAlert",
-  "lastUpdate" : 1650378139411,
+  "lastUpdate" : 1650378828841,
   "rows" : [
     [
       {
@@ -322,11 +322,11 @@
           },
           "processName" : {
             "type" : "expression",
-            "value" : "processCreatingBlogAlert[0].name"
+            "value" : "processCreatingBlogAlert[1].name"
           },
           "processVersion" : {
             "type" : "expression",
-            "value" : "processCreatingBlogAlert[0].version"
+            "value" : "processCreatingBlogAlert[1].version"
           },
           "taskId" : {
             "type" : "constant"
@@ -356,6 +356,58 @@
         "reference" : "7c9b10f3-4e24-40cf-b3a2-ef8132431d4d",
         "hasValidationError" : false,
         "id" : "pbLink"
+      }
+    ],
+    [
+      {
+        "type" : "component",
+        "dimension" : {
+          "xs" : 12,
+          "sm" : 12,
+          "md" : 12,
+          "lg" : 12
+        },
+        "propertyValues" : {
+          "cssClasses" : {
+            "type" : "constant",
+            "value" : ""
+          },
+          "hidden" : {
+            "type" : "constant",
+            "value" : true
+          },
+          "labelHidden" : {
+            "type" : "constant",
+            "value" : true
+          },
+          "label" : {
+            "type" : "interpolation",
+            "value" : "Default label"
+          },
+          "labelPosition" : {
+            "type" : "constant",
+            "value" : "top"
+          },
+          "labelWidth" : {
+            "type" : "constant",
+            "value" : 4
+          },
+          "allowHTML" : {
+            "type" : "constant",
+            "value" : true
+          },
+          "text" : {
+            "type" : "interpolation",
+            "value" : "<pre>{{processCreatingBlogAlert| json}}</pre>"
+          },
+          "alignment" : {
+            "type" : "constant",
+            "value" : "left"
+          }
+        },
+        "reference" : "09c8cf36-b489-44a8-9dc6-e5662aa984cd",
+        "hasValidationError" : false,
+        "id" : "pbText"
       }
     ]
   ],
@@ -404,7 +456,11 @@
       "value" : [
         "../API/bpm/process?f=name=Postingablog&p=0&c=10&o=version&f=activationState=ENABLED"
       ],
-      "advancedOptions" : { },
+      "advancedOptions" : {
+        "headers" : "",
+        "statusCode" : "",
+        "failedResponseValue" : ""
+      },
       "exposed" : false
     }
   },
