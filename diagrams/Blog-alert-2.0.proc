@@ -30,7 +30,7 @@
           <iteratorExpression xmi:type="expression:Expression" xmi:id="_Qt4cdbHMEeypwLpeLeoGfA" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
           <completionCondition xmi:type="expression:Expression" xmi:id="_Qt4cdrHMEeypwLpeLeoGfA" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cd7HMEeypwLpeLeoGfA">
-            <targetForm xmi:type="expression:Expression" xmi:id="_Xlw1wLdUEeyxLuItBZKYKw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+            <targetForm xmi:type="expression:Expression" xmi:id="__V5fUL_hEeyu8dYAKES9VQ" name="chooseTemplate" content="6590cef6-7f58-4e3e-85bf-3f71811a8a3f" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
           </formMapping>
           <contract xmi:type="process:Contract" xmi:id="_Qt4cebHMEeypwLpeLeoGfA">
             <inputs xmi:type="process:ContractInput" xmi:id="_Qt4cerHMEeypwLpeLeoGfA" name="blogInput" type="COMPLEX" dataReference="blog" createMode="false">
@@ -87,15 +87,15 @@
                 <expression xmi:type="expression:Expression" xmi:id="_nhxt9LdREeyxLuItBZKYKw" content="" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt9bdREeyxLuItBZKYKw" key="subject">
-                <expression xmi:type="expression:Expression" xmi:id="_nhxt9rdREeyxLuItBZKYKw" name="subject()" content="def myTemplate= blog.templates.get(0).content&#xD;&#xA;def engine = new groovy.text.SimpleTemplateEngine() &#xD;&#xA;return engine.createTemplate(myTemplate).make([link:blog.link]).toString() " interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
-                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_bgMOgLdVEeyxLuItBZKYKw" name="blog" dataType="_Qt5DdLHMEeypwLpeLeoGfA" className="com.bonita.model.Blogs"/>
-                </expression>
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt9rdREeyxLuItBZKYKw" name="Blog alert" content="Blog alert" interpreter="GROOVY" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt-LdREeyxLuItBZKYKw" key="html">
                 <expression xmi:type="expression:Expression" xmi:id="_nhxt-bdREeyxLuItBZKYKw" name="false" content="false" returnType="java.lang.Boolean" returnTypeFixed="true"/>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt-rdREeyxLuItBZKYKw" key="message">
-                <expression xmi:type="expression:Expression" xmi:id="_nhxt-7dREeyxLuItBZKYKw" name="&lt;pattern-expression>" content="" type="TYPE_PATTERN" returnTypeFixed="true"/>
+                <expression xmi:type="expression:Expression" xmi:id="_nhxt-7dREeyxLuItBZKYKw" name="blogAlert()" content="def myTemplate= blog.templates.get(0).content&#xD;&#xA;def engine = new groovy.text.SimpleTemplateEngine()&#xD;&#xA;return engine.createTemplate(myTemplate).make([link:blog.link,author:blog.author,title:blog.title,shortDesc:blog.shortDescription]).toString()" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true">
+                  <referencedElements xmi:type="process:BusinessObjectData" xmi:id="_N1BT8L_lEeyu8dYAKES9VQ" name="blog" dataType="_Qt5DdLHMEeypwLpeLeoGfA" className="com.bonita.model.Blogs"/>
+                </expression>
               </parameters>
               <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_nhxt_7dREeyxLuItBZKYKw" key="headers">
                 <expression xmi:type="expression:TableExpression" xmi:id="_nhxuALdREeyxLuItBZKYKw"/>
@@ -129,7 +129,7 @@
         </defaultValue>
       </data>
       <formMapping xmi:type="process:FormMapping" xmi:id="_Qt4cpbHMEeypwLpeLeoGfA">
-        <targetForm xmi:type="expression:Expression" xmi:id="_Xlw1wbdUEeyxLuItBZKYKw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+        <targetForm xmi:type="expression:Expression" xmi:id="_w1Ln4L_hEeyu8dYAKES9VQ" name="newTweetBlog" content="a3831a39-d0cd-4fcc-ac87-ead38a9137e2" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
       </formMapping>
       <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_Qt4cp7HMEeypwLpeLeoGfA">
         <targetForm xmi:type="expression:Expression" xmi:id="_Qt4cqLHMEeypwLpeLeoGfA" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
