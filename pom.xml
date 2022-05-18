@@ -94,20 +94,10 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.bonitasoft.connectors</groupId>
-      <artifactId>bonita-connector-twitter</artifactId>
-      <version>1.2.1</version>
-    </dependency>
-    <dependency>
       <groupId>com.bonita.model</groupId>
       <artifactId>bdm-client</artifactId>
       <version>1.0.0</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.bonitasoft.connectors</groupId>
-      <artifactId>bonita-connector-groovy</artifactId>
-      <version>1.1.4</version>
     </dependency>
     <dependency>
       <groupId>org.bonitasoft.connectors</groupId>

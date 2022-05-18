@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connectorconfiguration="http://wwww.bonitasoft.org/model/connector/configuration" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
   <process:MainProcess xmi:id="_lT-5gK9iEeye_bOIwyjxUg" name="Blog-alert" author="Soham" bonitaVersion="7.13.0" bonitaModelVersion="7.12.0-004">
     <elements xmi:type="process:Pool" xmi:id="_lT-5ga9iEeye_bOIwyjxUg" name="Postingablog" displayName="Posting a blog">
       <elements xmi:type="process:Lane" xmi:id="_lT-5gq9iEeye_bOIwyjxUg" name="Employee Lane" actor="_lT-5m69iEeye_bOIwyjxUg">
@@ -48,40 +48,6 @@
           <dynamicLabel xmi:type="expression:Expression" xmi:id="_pSPpYq9jEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
           <dynamicDescription xmi:type="expression:Expression" xmi:id="_pSPpYa9jEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
           <stepSummary xmi:type="expression:Expression" xmi:id="_pSPpY69jEeye_bOIwyjxUg" name="" content="" returnTypeFixed="true"/>
-          <connectors xmi:type="process:Connector" xmi:id="_utsMIK9oEeye_bOIwyjxUg" name="Sendatweet" definitionId="twitter-direct" event="ON_FINISH" definitionVersion="1.0.0">
-            <configuration xmi:type="connectorconfiguration:ConnectorConfiguration" xmi:id="_utsMIa9oEeye_bOIwyjxUg" definitionId="twitter-direct" version="1.0.0" modelVersion="7.12.0-004">
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMIq9oEeye_bOIwyjxUg" key="proxyHost">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMI69oEeye_bOIwyjxUg" content="" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMJK9oEeye_bOIwyjxUg" key="proxyPort">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMJa9oEeye_bOIwyjxUg" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMJq9oEeye_bOIwyjxUg" key="proxyUser">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMJ69oEeye_bOIwyjxUg" content="" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMKK9oEeye_bOIwyjxUg" key="proxyPass">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMKa9oEeye_bOIwyjxUg" content="" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMKq9oEeye_bOIwyjxUg" key="consumerKey">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMK69oEeye_bOIwyjxUg" name="rkUk07VBjE2pxnZBKlntUT7Zp" content="rkUk07VBjE2pxnZBKlntUT7Zp" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMLK9oEeye_bOIwyjxUg" key="consumerSecret">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMLa9oEeye_bOIwyjxUg" name="zoM9MzNLOfF1E3iQKeMLzGHy5UhbfLHdFAApMsoRByjLy7cRaM" content="zoM9MzNLOfF1E3iQKeMLzGHy5UhbfLHdFAApMsoRByjLy7cRaM" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMLq9oEeye_bOIwyjxUg" key="accessToken">
-                <expression xmi:type="expression:Expression" xmi:id="_utsML69oEeye_bOIwyjxUg" name="1468185161804230660-oK8vs1YnCB9aL5VYTLC8L5b1YwyJWA" content="1468185161804230660-oK8vs1YnCB9aL5VYTLC8L5b1YwyJWA" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMMK9oEeye_bOIwyjxUg" key="accessTokenSecret">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMMa9oEeye_bOIwyjxUg" name="YIti4aYqK37gPKZKpt51GRa18kMAVtjaITHkpupbPrFBJ" content="YIti4aYqK37gPKZKpt51GRa18kMAVtjaITHkpupbPrFBJ" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMMq9oEeye_bOIwyjxUg" key="message">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMM69oEeye_bOIwyjxUg" name="message()" content="hello world" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnTypeFixed="true"/>
-              </parameters>
-              <parameters xmi:type="connectorconfiguration:ConnectorParameter" xmi:id="_utsMNK9oEeye_bOIwyjxUg" key="recipientId">
-                <expression xmi:type="expression:Expression" xmi:id="_utsMNa9oEeye_bOIwyjxUg" name="test" content="test" returnTypeFixed="true"/>
-              </parameters>
-            </configuration>
-          </connectors>
           <loopCondition xmi:type="expression:Expression" xmi:id="_pSPpZK9jEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
           <loopMaximum xmi:type="expression:Expression" xmi:id="_pSPpZa9jEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
           <cardinalityExpression xmi:type="expression:Expression" xmi:id="_pSPpZq9jEeye_bOIwyjxUg" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
